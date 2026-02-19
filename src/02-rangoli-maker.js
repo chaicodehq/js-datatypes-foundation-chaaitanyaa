@@ -12,7 +12,7 @@
  *
  *   1. repeatPattern(pattern, times)
  *      - .repeat(times) use karke pattern ko repeat karo
- *      - Agar pattern string nahi hai ya times positive integer nahi hai, return ""
+ *      - Agar pattern string nahi hai ya times positive  integer nahi hai, return ""
  *      - Example: repeatPattern("*-", 4) => "*-*-*-*-"
  *
  *   2. extractRangoliCenter(design, start, end)
@@ -47,20 +47,59 @@
  */
 export function repeatPattern(pattern, times) {
   // Your code here
+  if (
+    typeof pattern !== 'string' ||
+    typeof times !== 'number' ||
+    times <= 0 ||
+    !Number.isInteger(times)
+  ) {
+    return ''
+  }
+
+  return pattern.repeat(times)
 }
 
 export function extractRangoliCenter(design, start, end) {
   // Your code here
+  if (
+    typeof design !== 'string' ||
+    typeof start !== 'number' ||
+    typeof end !== 'number'
+  ) {
+    return ''
+  }
+
+  return design.slice(start, end)
 }
 
 export function splitAndJoinRangoli(colorString, oldSep, newSep) {
   // Your code here
+
+  if (typeof colorString !== 'string') {
+    return ''
+  }
+
+  return colorString.split(oldSep).join(newSep)
 }
 
 export function replaceRangoliColor(design, oldColor, newColor) {
   // Your code here
+  if (
+    typeof design !== 'string' ||
+    typeof oldColor !== 'string' ||
+    typeof newColor !== 'string'
+  ) {
+    return ''
+  }
+
+  return design.replaceAll(oldColor, newColor)
 }
 
 export function makeRangoliBorder(char, length) {
-  // Your code here
+  // your code here
+
+  if (typeof char !== 'string' || length <= 0) {
+    return ''
+  }
+  return char.repeat(length).slice(0, length)
 }

@@ -47,16 +47,59 @@
  */
 export function createPaanOrder(basePaan, customizations) {
   // Your code here
+
+  let copy = { ...basePaan }
+
+  if (typeof basePaan !== 'object' || basePaan === null) {
+    return {}
+  }
+
+  if (typeof customizations !== 'object') {
+    return copy
+  }
+
+  return Object.assign({}, basePaan, customizations)
 }
 
 export function freezeMenu(menu) {
   // Your code here
+
+  if (typeof menu !== 'object' || menu === null) {
+    return {}
+  }
+
+  return Object.freeze(menu)
 }
 
 export function updatePrices(menu, increase) {
   // Your code here
+
+  if (
+    typeof menu !== 'object' ||
+    menu === null ||
+    typeof increase !== 'number'
+  ) {
+    return {}
+  }
+
+  let newOb = Object.entries(menu)
+
+  let updatedOb = newOb.map(([key, value]) => {
+    return [key, value + increase]
+  })
+
+  let entryOb = Object.fromEntries(updatedOb)
+
+  return entryOb
 }
 
 export function mergeDailySpecials(regularMenu, specialsMenu) {
   // Your code here
+
+  if (typeof regularMenu !== 'object' || typeof specialsMenu !== 'object') {
+    return {}
+  }
+
+  let newOb = { ...regularMenu, ...specialsMenu }
+  return newOb
 }
